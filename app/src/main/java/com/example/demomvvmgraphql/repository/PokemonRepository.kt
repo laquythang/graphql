@@ -1,24 +1,27 @@
+package com.example.demomvvmgraphql.repository
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.demomvvmgraphql.PokemonDetailRepositoryQuery
-import com.example.demomvvmgraphql.view.base.Resource
-import com.example.demomvvmgraphql.view.repository.Repository
-import com.tayfuncesur.pokehub.network.ApiService
+import com.example.demomvvmgraphql.PokemonRepositoryQuery
+import com.example.demomvvmgraphql.base.Resource
+import com.example.demomvvmgraphql.network.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class PokemonDetailRepository @Inject constructor(private var apiService: ApiService) : Repository {
+@Singleton
+class PokemonRepository @Inject constructor(private var apiService: ApiService) : Repository {
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val result = MutableLiveData<Resource<PokemonDetailRepositoryQuery.Pokemon>>()
+    private val result = MutableLiveData<Resource<List<PokemonRepositoryQuery.Pokemon>>>()
 
-    fun getPokemonDetail(id: String): LiveData<Resource<PokemonDetailRepositoryQuery.Pokemon>> {
+    fun getPokemons(count: Int): LiveData<Resource<List<PokemonRepositoryQuery.Pokemon>>> {
         addDisposable(
-            apiService.getPokemonDetail(id)
+            apiService.getPokemons(count)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { whenStart() }
@@ -35,8 +38,8 @@ class PokemonDetailRepository @Inject constructor(private var apiService: ApiSer
         result.value = Resource.Loading()
     }
 
-    fun whenSuccess(pokemon: PokemonDetailRepositoryQuery.Pokemon) {
-        result.value = Resource.Success(pokemon)
+    fun whenSuccess(pokemonList: List<PokemonRepositoryQuery.Pokemon>) {
+        result.value = Resource.Success(pokemonList)
     }
 
     fun whenError(cause: String) {
@@ -50,4 +53,5 @@ class PokemonDetailRepository @Inject constructor(private var apiService: ApiSer
     override fun clear() {
         compositeDisposable.clear()
     }
+
 }

@@ -1,4 +1,4 @@
-package com.tayfuncesur.pokehub.network
+package com.example.demomvvmgraphql.network
 
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.rx2.Rx2Apollo

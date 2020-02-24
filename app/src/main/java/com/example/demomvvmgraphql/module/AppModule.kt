@@ -1,7 +1,7 @@
-package com.example.demomvvmgraphql.view.modul
+package com.example.demomvvmgraphql.module
 
-import com.example.demomvvmgraphql.view.activity.MainActivity
-import com.example.demomvvmgraphql.view.activity.SpashActivity
+import com.example.demomvvmgraphql.activity.MainActivity
+import com.example.demomvvmgraphql.activity.SpashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

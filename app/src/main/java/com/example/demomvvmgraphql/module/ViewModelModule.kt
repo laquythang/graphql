@@ -1,11 +1,11 @@
-package com.example.demomvvmgraphql.view.modul
+package com.example.demomvvmgraphql.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.demomvvmgraphql.view.viewmodel.MainViewModel
-import com.example.demomvvmgraphql.view.viewmodel.SplashScreenViewModel
-import com.example.demomvvmgraphql.view.viewmodel.ViewModelFactory
-import com.example.demomvvmgraphql.view.viewmodel.ViewModelKey
+import com.example.demomvvmgraphql.viewmodel.MainViewModel
+import com.example.demomvvmgraphql.viewmodel.SplashScreenViewModel
+import com.example.demomvvmgraphql.viewmodel.ViewModelFactory
+import com.example.demomvvmgraphql.viewmodel.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
