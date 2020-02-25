@@ -1,9 +1,9 @@
-package com.example.demomvvmgraphql.view.modul
+package com.example.demomvvmgraphql.module
 
 import com.apollographql.apollo.ApolloClient
 import com.example.demomvvmgraphql.BuildConfig
-import com.example.demomvvmgraphql.view.util.BASE_URL
-import com.tayfuncesur.pokehub.network.ApiService
+import com.example.demomvvmgraphql.network.ApiService
+import com.example.demomvvmgraphql.util.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql.view.activity
+package com.example.demomvvmgraphql.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.demomvvmgraphql.R
-import com.example.demomvvmgraphql.view.viewmodel.SplashScreenViewModel
+import com.example.demomvvmgraphql.viewmodel.SplashScreenViewModel
 import javax.inject.Inject
 
 @SuppressLint("Registered")
@@ -31,7 +31,6 @@ class SpashActivity : BaseDaggerActivity() {
         setContentView(R.layout.activity_spash_screen)
         splashScreenViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(SplashScreenViewModel::class.java)
-
         splashScreenViewModel.isFinished.observe(this, Observer {
             startActivity(Intent(this@SpashActivity, MainActivity::class.java))
             finish()

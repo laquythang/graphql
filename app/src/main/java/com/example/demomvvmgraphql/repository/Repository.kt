@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql.view.repository
+package com.example.demomvvmgraphql.repository
 
 import io.reactivex.disposables.Disposable
 

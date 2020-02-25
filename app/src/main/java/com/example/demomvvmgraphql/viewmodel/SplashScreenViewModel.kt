@@ -1,12 +1,10 @@
-package com.example.demomvvmgraphql.view.viewmodel
-
+package com.example.demomvvmgraphql.viewmodel
 
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.demomvvmgraphql.view.util.SPLASH_SCREEN_DELAY
+import com.example.demomvvmgraphql.util.SPLASH_SCREEN_DELAY
 import javax.inject.Inject
-
 
 class SplashScreenViewModel @Inject constructor() : ViewModel() {
 

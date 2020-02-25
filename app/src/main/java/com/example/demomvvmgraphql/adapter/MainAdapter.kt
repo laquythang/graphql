@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql.view.adapter
+package com.example.demomvvmgraphql.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.main_adapter_single_row.view.*
 
 class MainAdapter(var list: List<PokemonRepositoryQuery.Pokemon>) :
     RecyclerView.Adapter<MainAdapter.SingleRow>() {
-
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SingleRow {
         return SingleRow(
@@ -34,7 +33,7 @@ class MainAdapter(var list: List<PokemonRepositoryQuery.Pokemon>) :
 
 
     inner class SingleRow(var view: View) :
-        androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
+        RecyclerView.ViewHolder(view) {
 
         fun bind(pos: Int) {
             Glide.with(view.context).load(list[pos].image()).into(view.image)

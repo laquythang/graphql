@@ -1,7 +1,7 @@
-package com.example.demomvvmgraphql.view
+package com.example.demomvvmgraphql
 
 import android.app.Application
-import com.example.demomvvmgraphql.view.modul.AppInjector
+import com.example.demomvvmgraphql.module.AppInjector
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector

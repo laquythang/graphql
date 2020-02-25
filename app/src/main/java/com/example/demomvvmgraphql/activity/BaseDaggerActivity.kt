@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql.view.activity
+package com.example.demomvvmgraphql.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -16,8 +16,8 @@ open class BaseDaggerActivity : AppCompatActivity(), HasAndroidInjector {
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun androidInjector(): AndroidInjector<Any> {
