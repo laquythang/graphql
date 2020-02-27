@@ -1,10 +1,10 @@
 package com.example.demomvvmgraphql.view.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demomvvmgraphql.R
 import com.example.demomvvmgraphql.adapter.MainAdapter
@@ -37,25 +37,40 @@ class MainActivity : BaseDaggerActivity() {
 
         liveData.observe(this, Observer {
             if (it is Resource.Success) {
-                binding.recycler.adapter = mainAdapter
-                val adapter = it.data?.let { it1 ->
-                    MainAdapter(it1) { pokemon ->
+                it.data.let { listPokemons ->
+                    val list = listPokemons
+                    mainAdapter = MainAdapter(dataBindingComponent = dataBinding, list = listPokemons) { pokemon ->
                         pokemon.id().let { it2 -> PokemonDetailFragment.newInstance(it2) }.let { it3 ->
                             supportFragmentManager.beginTransaction().setCustomAnimations(
-                                android.R.anim.fade_in,
-                                android.R.anim.fade_out,
-                                android.R.anim.fade_in,
-                                android.R.anim.fade_out
-                            ).add(
-                                R.id.mainActivityRoot,
-                                it3
-                            ).addToBackStack(PokemonDetailFragment::class.java.name).commit()
+                                    android.R.anim.fade_in,
+                                    android.R.anim.fade_out,
+                                    android.R.anim.fade_in,
+                                    android.R.anim.fade_out
+                            ).add(R.id.mainActivityRoot, it3).addToBackStack(PokemonDetailFragment::class.java.name).commit()
                         }
                     }
+                    binding.recycler.adapter = mainAdapter
+                    binding.recycler.apply {
+                        addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+                    }
+                    mainAdapter.submitList(list)
                 }
-
-                Log.e("Tag", "--- number: ${adapter?.itemCount}")
             }
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val fragment = supportFragmentManager.findFragmentById(R.id.mainActivityRoot)
+        supportFragmentManager.putFragment(outState, PokemonDetailFragment::class.java.simpleName, fragment!!)
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        }else {
+            super.onBackPressed()
+
+        }
     }
 }

@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.demomvvmgraphql.PokemonDetailRepositoryQuery
 import com.example.demomvvmgraphql.PokemonRepositoryQuery
 import com.example.demomvvmgraphql.R
+import com.example.demomvvmgraphql.binding.IDataBindingComponent
+import com.example.demomvvmgraphql.databinding.AdapterEvulotionBinding
 import com.example.demomvvmgraphql.databinding.MainAdapterSingleRowBinding
 
-class PokemonEvulotionAdapter(
-        var list: List<PokemonDetailRepositoryQuery.Evolution>,
-        var click: (PokemonRepositoryQuery.Pokemon) -> Unit
-) : DataBoundListAdapter<Int>(
-        diffCallback = object : DiffUtil.ItemCallback<Int>() {
-            override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean {
+class PokemonEvulotionAdapter constructor(private val dataBindingComponent: IDataBindingComponent, var list: List<PokemonDetailRepositoryQuery.Evolution>?, var click: (PokemonDetailRepositoryQuery.Evolution) -> Unit
+) : DataBoundListAdapter<PokemonDetailRepositoryQuery.Evolution>(
+        diffCallback = object : DiffUtil.ItemCallback<PokemonDetailRepositoryQuery.Evolution>() {
+            override fun areItemsTheSame(oldItem: PokemonDetailRepositoryQuery.Evolution, newItem: PokemonDetailRepositoryQuery.Evolution): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: Int, newItem: Int): Boolean {
+            override fun areContentsTheSame(oldItem: PokemonDetailRepositoryQuery.Evolution, newItem: PokemonDetailRepositoryQuery.Evolution): Boolean {
                 return oldItem == newItem
             }
         }
@@ -27,17 +27,18 @@ class PokemonEvulotionAdapter(
     override fun createBinding(parent: ViewGroup, viewType: Int): ViewDataBinding {
         return DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.main_adapter_single_row,
+                R.layout.adapter_evulotion,
                 parent,
-                false
+                false,dataBindingComponent.getDataBindingComponent()
         )
     }
 
-    override fun bind(binding: ViewDataBinding, item: Int) {
+    override fun bind(binding: ViewDataBinding, item: PokemonDetailRepositoryQuery.Evolution) {
         when (binding) {
-            is MainAdapterSingleRowBinding -> {
-                binding.pokemomdetail?.let {
-                    click.invoke(it)
+            is AdapterEvulotionBinding -> {
+                binding.evolution = item
+                binding.root.setOnClickListener {
+                    click.invoke(item)
                 }
             }
         }

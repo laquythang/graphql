@@ -7,30 +7,31 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import com.example.demomvvmgraphql.PokemonRepositoryQuery
 import com.example.demomvvmgraphql.R
+import com.example.demomvvmgraphql.binding.IDataBindingComponent
 import com.example.demomvvmgraphql.databinding.MainAdapterSingleRowBinding
 
-class MainAdapter(var list: List<PokemonRepositoryQuery.Pokemon>, var click: (PokemonRepositoryQuery.Pokemon) -> Unit) : DataBoundListAdapter<Int>(
+class MainAdapter constructor(private val dataBindingComponent: IDataBindingComponent, var list: List<PokemonRepositoryQuery.Pokemon>?, var click: (PokemonRepositoryQuery.Pokemon) -> Unit) : DataBoundListAdapter<PokemonRepositoryQuery.Pokemon>(
 
-        diffCallback = object : DiffUtil.ItemCallback<Int>() {
-            override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean {
+        diffCallback = object : DiffUtil.ItemCallback<PokemonRepositoryQuery.Pokemon>() {
+            override fun areItemsTheSame(oldItem: PokemonRepositoryQuery.Pokemon, newItem: PokemonRepositoryQuery.Pokemon): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: Int, newItem: Int): Boolean {
+            override fun areContentsTheSame(oldItem: PokemonRepositoryQuery.Pokemon, newItem: PokemonRepositoryQuery.Pokemon): Boolean {
                 return oldItem == newItem
             }
         }
 ) {
     override fun createBinding(parent: ViewGroup, viewType: Int): ViewDataBinding {
-        return DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.main_adapter_single_row, parent, false)
+        return DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.main_adapter_single_row, parent, false, dataBindingComponent.getDataBindingComponent())
     }
 
-    override fun bind(binding: ViewDataBinding, item: Int) {
+    override fun bind(binding: ViewDataBinding, item: PokemonRepositoryQuery.Pokemon) {
         when (binding) {
             is MainAdapterSingleRowBinding -> {
-                binding.pokemomdetail = list.get(item)
-                binding.pokemomdetail?.let {
-                    click.invoke(it)
+                binding.pokemomdetail = item
+                binding.root.setOnClickListener {
+                    click?.invoke(item)
                 }
             }
         }
