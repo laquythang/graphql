@@ -1,5 +1,6 @@
 package com.example.demomvvmgraphql.module
 
+import android.util.Log
 import com.apollographql.apollo.ApolloClient
 import com.example.demomvvmgraphql.BuildConfig
 import com.example.demomvvmgraphql.network.ApiService
@@ -18,7 +19,12 @@ class NetworkModule {
     fun provideHttpClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
-            val interceptor = HttpLoggingInterceptor()
+            val interceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                override fun log(message: String) {
+                    Log.e("Tag", "\n" + message)
+                }
+
+            })
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             client.addInterceptor(interceptor)
         }

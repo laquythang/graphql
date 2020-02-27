@@ -31,7 +31,7 @@ class MainAdapter constructor(private val dataBindingComponent: IDataBindingComp
             is MainAdapterSingleRowBinding -> {
                 binding.pokemomdetail = item
                 binding.root.setOnClickListener {
-                    click?.invoke(item)
+                    click.invoke(item)
                 }
             }
         }

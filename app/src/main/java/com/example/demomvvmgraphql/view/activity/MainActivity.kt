@@ -32,9 +32,7 @@ class MainActivity : BaseDaggerActivity() {
         val liveData = mainViewModel.pokemonLiveData
         binding.data = liveData
         binding.lifecycleOwner = this
-
         recycler.layoutManager = GridLayoutManager(this, 2)
-
         liveData.observe(this, Observer {
             if (it is Resource.Success) {
                 it.data.let { listPokemons ->
@@ -46,7 +44,7 @@ class MainActivity : BaseDaggerActivity() {
                                     android.R.anim.fade_out,
                                     android.R.anim.fade_in,
                                     android.R.anim.fade_out
-                            ).add(R.id.mainActivityRoot, it3).addToBackStack(PokemonDetailFragment::class.java.name).commit()
+                            ).replace(R.id.mainActivityRoot, it3, PokemonDetailFragment::class.java.name).addToBackStack(PokemonDetailFragment::class.java.name).commit()
                         }
                     }
                     binding.recycler.adapter = mainAdapter
@@ -59,18 +57,11 @@ class MainActivity : BaseDaggerActivity() {
         })
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val fragment = supportFragmentManager.findFragmentById(R.id.mainActivityRoot)
-        supportFragmentManager.putFragment(outState, PokemonDetailFragment::class.java.simpleName, fragment!!)
-    }
-
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStack()
-        }else {
+        } else {
             super.onBackPressed()
-
         }
     }
 }
