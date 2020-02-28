@@ -1,8 +1,9 @@
-package com.example.demomvvmgraphql.activity
+package com.example.demomvvmgraphql.view.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.demomvvmgraphql.binding.IDataBindingComponent
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -14,6 +15,9 @@ open class BaseDaggerActivity : AppCompatActivity(), HasAndroidInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+
+    @Inject
+    lateinit var dataBinding: IDataBindingComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

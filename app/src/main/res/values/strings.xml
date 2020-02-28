@@ -9,4 +9,5 @@
     <string name="weaknesses">Weaknesses</string>
     <string name="evolutions">Evolutions</string>
     <string name="loadingDetail">Getting Details..</string>
+    <string name="textWeight"><![CDATA[Max: %1$s <br/> Min: %2$s]]></string>
 </resources>

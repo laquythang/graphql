@@ -5,8 +5,8 @@
         <import type="java.util.List" />
 
         <variable
-            name="pokemomdetail"
-            type="com.example.demomvvmgraphql.PokemonRepositoryQuery.Pokemon" />
+            name="evolution"
+            type="com.example.demomvvmgraphql.PokemonDetailRepositoryQuery.Evolution" />
     </data>
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                app:imageUrl="@{pokemomdetail.image()}"
+                app:imageUrl="@{evolution.image()}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
@@ -38,7 +38,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    app:text="@{pokemomdetail.name()}"
+                    app:text="@{evolution.name()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
