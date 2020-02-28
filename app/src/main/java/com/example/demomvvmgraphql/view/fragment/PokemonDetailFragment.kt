@@ -14,13 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demomvvmgraphql.PokemonDetailRepositoryQuery
 import com.example.demomvvmgraphql.R
 import com.example.demomvvmgraphql.adapter.PokemonEvulotionAdapter
+import com.example.demomvvmgraphql.base.BaseDaggerFragment
 import com.example.demomvvmgraphql.base.Resource
 import com.example.demomvvmgraphql.databinding.FragmentPokemonDetailBinding
 import com.example.demomvvmgraphql.viewmodel.PokemonDetailViewModel
 import javax.inject.Inject
 
 @Suppress("DEPRECATION")
-class PokemonDetailFragment : DataBindingDaggerFragment(), IFragment {
+class PokemonDetailFragment : BaseDaggerFragment(), IFragment {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

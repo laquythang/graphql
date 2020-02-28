@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql.view.fragment
+package com.example.demomvvmgraphql.base
 
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import dagger.android.support.AndroidSupportInjection
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-abstract class DataBindingDaggerFragment : Fragment(), HasAndroidInjector {
+abstract class BaseDaggerFragment : Fragment(), HasAndroidInjector {
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
     @Inject

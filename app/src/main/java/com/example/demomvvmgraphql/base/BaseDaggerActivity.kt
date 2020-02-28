@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql.view.activity
+package com.example.demomvvmgraphql.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle

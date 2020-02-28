@@ -1,4 +1,4 @@
-package com.example.demomvvmgraphql
+package com.example.demomvvmgraphql.base
 
 import android.app.Application
 import com.example.demomvvmgraphql.module.AppInjector

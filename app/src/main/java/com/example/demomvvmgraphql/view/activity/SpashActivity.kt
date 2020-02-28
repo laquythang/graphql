@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.demomvvmgraphql.R
+import com.example.demomvvmgraphql.base.BaseDaggerActivity
 import com.example.demomvvmgraphql.viewmodel.SplashScreenViewModel
 import javax.inject.Inject
 

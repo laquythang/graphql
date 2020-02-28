@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.demomvvmgraphql.R
 import com.example.demomvvmgraphql.adapter.MainAdapter
+import com.example.demomvvmgraphql.base.BaseDaggerActivity
 import com.example.demomvvmgraphql.base.Resource
 import com.example.demomvvmgraphql.databinding.ActivityMainBinding
 import com.example.demomvvmgraphql.view.fragment.PokemonDetailFragment

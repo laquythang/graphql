@@ -1,7 +1,7 @@
 package com.example.demomvvmgraphql.module
 
 import android.app.Application
-import com.example.demomvvmgraphql.App
+import com.example.demomvvmgraphql.base.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

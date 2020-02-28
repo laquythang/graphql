@@ -1,6 +1,6 @@
 package com.example.demomvvmgraphql.module
 
-import com.example.demomvvmgraphql.App
+import com.example.demomvvmgraphql.base.App
 
 object AppInjector {
 
